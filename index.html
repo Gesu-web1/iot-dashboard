@@ -60,6 +60,7 @@
         const chartCo2 = new Chart(document.getElementById('chart-co2').getContext('2d'), crearConfigGrafico('Partes por millón (ppm)', 'rgba(253, 126, 20, 0.1)', '#fd7e14'));
 
         // Función para actualizar un gráfico específico consultando su endpoint correspondiente
+     |  // Función para actualizar un gráfico específico consultando su endpoint correspondiente
         async function actualizarGrafico(tipoSensor, objetoGrafico) {
             try {
                 const response = await fetch(`${BASE_URL}/${tipoSensor}`);
@@ -69,9 +70,15 @@
                 objetoGrafico.data.labels = datos.map(item => new Date(item.fecha_registro).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
                 objetoGrafico.data.datasets[0].data = datos.map(item => item.sensor_valor);
                 objetoGrafico.update();
+        
+                // Si llega aquí, al menos este sensor cargó bien; reseteamos el mensaje de error
+                const statusText = document.getElementById('status-text');
+                statusText.innerText = "Online (Actualizado)";
+                statusText.style.color = "#28a745";
             } catch (e) {
-                document.getElementById('status-text').innerText = "Error al leer sensores";
-                document.getElementById('status-text').style.color = "#dc3545";
+                const statusText = document.getElementById('status-text');
+                statusText.innerText = "Error al leer sensores";
+                statusText.style.color = "#dc3545";
             }
         }
 
