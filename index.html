@@ -60,7 +60,7 @@
         const chartCo2 = new Chart(document.getElementById('chart-co2').getContext('2d'), crearConfigGrafico('Partes por millón (ppm)', 'rgba(253, 126, 20, 0.1)', '#fd7e14'));
 
         // Función para actualizar un gráfico específico consultando su endpoint correspondiente
-     |  // Función para actualizar un gráfico específico consultando su endpoint correspondiente
+        // Función para actualizar un gráfico específico consultando su endpoint correspondiente
         async function actualizarGrafico(tipoSensor, objetoGrafico) {
             try {
                 const response = await fetch(`${BASE_URL}/${tipoSensor}`);
