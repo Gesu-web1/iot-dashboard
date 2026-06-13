@@ -88,8 +88,8 @@
             actualizarGrafico('co2', chartCo2);
         }
 
-        // Consultar los 3 dashboards en paralelo cada 4 segundos
-        setInterval(actualizarTodo, 4000);
+        // Consultar los dashboards en paralelo cada 1 segundo (1000 milisegundos)
+        setInterval(actualizarTodo, 1000);
         actualizarTodo();
     </script>
 </body>
